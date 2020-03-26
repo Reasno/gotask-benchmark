@@ -2,7 +2,7 @@
 
 TaskWorker vs GoTask
 
-TaskWorker按照Hyperf默认配置开启8进程。
+TaskWorker分别开启1进程和8进程。
 GoTask只开启1进程。
 
 100并发，10000次访问结果：
