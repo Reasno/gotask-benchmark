@@ -45,12 +45,12 @@ class IndexController extends AbstractController
 
     public function goFib(GoTask $task)
     {
-        return $task->call('App.Fib', 10);
+        return $task->call('App.Fib', 20);
     }
 
     public function phpFib(PHPTask $task)
     {
-        return $task->fib(10);
+        return $task->fib(20);
     }
 
     public function goBlocking(GoTask $task){
