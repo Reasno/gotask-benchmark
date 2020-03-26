@@ -1,3 +1,9 @@
+## Run Benchmark
+
+```bash
+go build -o gotask/app gotask/cmd/app.go && ./vendor/bin/init-proxy.sh && php bin/hyperf.php start 
+```
+
 ## Benchmark Result
 
 TaskWorker vs GoTask
