@@ -7,15 +7,71 @@ GoTask只开启1进程。
 
 100并发，10000次访问结果：
 
-| |PHP TaskWorker | GoTask  |
-|--|--|--|
-| HelloWorld | 24580.84 ops | 36001.66 ops  |
-| Mongo单条数据插入 | 12141.51 ops | 17372.63 ops  |
+| | PHP TaskWorker 1进程 |PHP TaskWorker 8进程 | GoTask  |
+|--|--|--|--|
+| HelloWorld | 10795.08 ops | 24580.84 ops | 36001.66 ops  |
+| Mongo单条数据插入 | 3796.85 ops | 12141.51 ops | 17372.63 ops  |
 
 ### Hello World
+TaskWorker 1 进程
 
-PHP TaskWorker
+```
+This is ApacheBench, Version 2.3 <$Revision: 1826891 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
 
+Benchmarking 127.0.0.1 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        Hyperf
+Server Hostname:        127.0.0.1
+Server Port:            9501
+
+Document Path:          /index/phpHi
+Document Length:        14 bytes
+
+Concurrency Level:      100
+Time taken for tests:   0.926 seconds
+Complete requests:      10000
+Failed requests:        0
+Keep-Alive requests:    10000
+Total transferred:      1560000 bytes
+HTML transferred:       140000 bytes
+Requests per second:    10795.08 [#/sec] (mean)
+Time per request:       9.263 [ms] (mean)
+Time per request:       0.093 [ms] (mean, across all concurrent requests)
+Transfer rate:          1644.56 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       3
+Processing:     2    9   2.8      9      19
+Waiting:        2    9   2.8      9      19
+Total:          2    9   2.9      9      19
+
+Percentage of the requests served within a certain time (ms)
+  50%      9
+  66%     10
+  75%     11
+  80%     11
+  90%     13
+  95%     15
+  98%     17
+  99%     18
+ 100%     19 (longest request)
+```
+TaskWorker 8 进程
 ```
 This is ApacheBench, Version 2.3 <$Revision: 1826891 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
@@ -123,7 +179,65 @@ Percentage of the requests served within a certain time (ms)
 
 ### Mongo数据库插入
 
-PHP TaskWorker
+TaskWorker 1进程
+```
+This is ApacheBench, Version 2.3 <$Revision: 1826891 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 1000 requests
+Completed 2000 requests
+Completed 3000 requests
+Completed 4000 requests
+Completed 5000 requests
+Completed 6000 requests
+Completed 7000 requests
+Completed 8000 requests
+Completed 9000 requests
+Completed 10000 requests
+Finished 10000 requests
+
+
+Server Software:        Hyperf
+Server Hostname:        127.0.0.1
+Server Port:            9501
+
+Document Path:          /index/phpInsert
+Document Length:        24 bytes
+
+Concurrency Level:      100
+Time taken for tests:   2.634 seconds
+Complete requests:      10000
+Failed requests:        0
+Keep-Alive requests:    10000
+Total transferred:      1660000 bytes
+HTML transferred:       240000 bytes
+Requests per second:    3796.85 [#/sec] (mean)
+Time per request:       26.338 [ms] (mean)
+Time per request:       0.263 [ms] (mean, across all concurrent requests)
+Transfer rate:          615.50 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0       3
+Processing:     2   26   4.4     25      47
+Waiting:        2   26   4.4     25      47
+Total:          2   26   4.3     25      47
+
+Percentage of the requests served within a certain time (ms)
+  50%     25
+  66%     27
+  75%     28
+  80%     28
+  90%     31
+  95%     34
+  98%     40
+  99%     41
+ 100%     47 (longest request)
+```
+
+TaskWorker 8进程
 
 ```
 This is ApacheBench, Version 2.3 <$Revision: 1826891 $>

@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\phpTask;
+use App\PHPTask;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Reasno\GoTask\GoTask;
 use Spiral\Goridge\RelayInterface as Relay;
@@ -24,7 +24,7 @@ use Spiral\Goridge\RelayInterface as Relay;
  */
 class IndexController extends AbstractController
 {
-    public function phpHi(phpTask $task)
+    public function phpHi(PHPTask $task)
     {
         return $task->hi('Reasno');
     }
@@ -34,17 +34,17 @@ class IndexController extends AbstractController
         return $task->call('App.Hi', 'Reasno');
     }
 
-    public function phpInsert(phpTask $task)
+    public function phpInsert(PHPTask $task)
     {
         return $task->insert(['random' => rand(1, 10000)]);
     }
 
-    public function goInsert(goTask $task)
+    public function goInsert(GoTask $task)
     {
         return $task->call('App.Insert', json_encode(['random' => rand(1, 10000)]), RELAY::PAYLOAD_RAW);
     }
 
-    public function goInsert2(goTask $task)
+    public function goInsert2(GoTask $task)
     {
         return $task->call('App.Insert2', ['random' => rand(1, 10000)]);
     }
