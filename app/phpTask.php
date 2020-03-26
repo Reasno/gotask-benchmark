@@ -8,7 +8,7 @@ use Hyperf\Task\Annotation\Task;
 use MongoDB\Client;
 use MongoDB\Driver\Manager;
 
-class phpTask
+class PHPTask
 {
     private $client;
 
