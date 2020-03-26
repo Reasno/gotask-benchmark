@@ -1,7 +1,13 @@
 ## Run Benchmark
 
+要求MongoDB在本地默认端口启动。
+
 ```bash
-go build -o gotask/app gotask/cmd/app.go && ./vendor/bin/init-proxy.sh && php bin/hyperf.php start 
+go build -o gotask/app gotask/cmd/app.go && ./vendor/bin/init-proxy.sh && php bin/hyperf.php start
+ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/phpHi 
+ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/goHi
+ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/phpInsert
+ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/goInsert
 ```
 
 ## Benchmark Result
