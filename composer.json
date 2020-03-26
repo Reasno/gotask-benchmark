@@ -25,7 +25,7 @@
         "hyperf/memory": "~1.1.0",
         "hyperf/process": "~1.1.0",
         "hyperf/redis": "~1.1.0",
-        "reasno/gotask": "~0.0.3",
+        "reasno/gotask": "dev-master",
         "ext-mongodb": "*",
         "mongodb/mongodb": "^1.6",
         "hyperf/task": "^1.1",

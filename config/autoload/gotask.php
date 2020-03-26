@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 /**
- * This file is part of Reasno/GoTask.
+ * This file is part of Hyperf.
  *
- * @link     https://www.github.com/reasno/gotask
- * @document  https://www.github.com/reasno/gotask
- * @contact  guxi99@gmail.com
- * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ * @link     https://www.hyperf.io
+ * @document https://doc.hyperf.io
+ * @contact  group@hyperf.io
+ * @license  https://github.com/hyperf-cloud/hyperf/blob/master/LICENSE
  */
 
 return [
     'enable' => true,
-    'executable' => BASE_PATH . '/gotask/app',
+    'executable' => BASE_PATH . '/bin/app',
     'socket_address' => value(function () {
         $appName = env('APP_NAME');
         $socketName = $appName . uniqid();

@@ -3,12 +3,18 @@
 要求MongoDB在本地默认端口启动。
 
 ```bash
-go build -o gotask/app gotask/cmd/app.go && ./vendor/bin/init-proxy.sh && php bin/hyperf.php start
-ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/phpHi 
-ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/goHi
-ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/phpInsert
-ab -k -c 100 -n 10000 http://127.0.0.1:9001/index/goInsert
+cd gotask
+go build -o ../bin/app cmd/app.go
+cd ..
+./vendor/bin/init-proxy.sh && php bin/hyperf.php start
 ```
+
+在另一个终端执行
+
+```bin
+./bin/bench.sh
+```
+
 
 ## Benchmark Result
 
@@ -17,14 +23,18 @@ TaskWorker vs GoTask
 TaskWorker分别开启1进程和8进程。
 GoTask只开启1进程。
 
+机器配置：iMac (Late 2015) 3.2 GHz Quad-Core Intel Core i5
+
 100并发，10000次访问结果：
 
 | | PHP TaskWorker 1进程 |PHP TaskWorker 8进程 | GoTask  |
 |--|--|--|--|
-| HelloWorld | 10795.08 ops | 24580.84 ops | 36001.66 ops  |
-| Mongo单条数据插入 | 3796.85 ops | 12141.51 ops | 17372.63 ops  |
+| HelloWorld | 10795.08 ops | 11042.28 ops | 19411.07 ops  |
+| 斐波那契(10) | 3796.85 ops | 1426.93 ops | 21623.54 ops  |
+| 100毫秒PHP阻塞模拟 | 3796.85 ops | 78.11 ops | 947.09 ops  |
+| Mongo 插入10条数据 | 3796.85 ops | 1715.84 ops | 1931.28 ops  |
 
-### Hello World
+### 全部结果
 TaskWorker 1 进程
 
 ```

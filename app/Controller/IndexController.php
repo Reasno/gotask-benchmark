@@ -18,9 +18,8 @@ use Reasno\GoTask\GoTask;
 use Spiral\Goridge\RelayInterface as Relay;
 
 /**
- * Class IndexController
- * @package App\Controller
- * @AutoController()
+ * Class IndexController.
+ * @AutoController
  */
 class IndexController extends AbstractController
 {
@@ -44,8 +43,21 @@ class IndexController extends AbstractController
         return $task->call('App.Insert', json_encode(['random' => rand(1, 10000)]), RELAY::PAYLOAD_RAW);
     }
 
-    public function goInsert2(GoTask $task)
+    public function goFib(GoTask $task)
     {
-        return $task->call('App.Insert2', ['random' => rand(1, 10000)]);
+        return $task->call('App.Fib', 10);
+    }
+
+    public function phpFib(PHPTask $task)
+    {
+        return $task->fib(10);
+    }
+
+    public function goBlocking(GoTask $task){
+        return $task->call('App.Blocking', null);
+    }
+
+    public function phpBlocking(PHPTask $task){
+        return $task->blocking();
     }
 }
