@@ -11,5 +11,4 @@ declare(strict_types=1);
  */
 
 return [
-    \Reasno\GoTask\GoTask::class => \Reasno\GoTask\RemoteGoTask::class,
 ];

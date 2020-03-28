@@ -15,7 +15,6 @@ namespace App\Controller;
 use App\PHPTask;
 use Hyperf\HttpServer\Annotation\AutoController;
 use Reasno\GoTask\GoTask;
-use Spiral\Goridge\RelayInterface as Relay;
 
 /**
  * Class IndexController.
@@ -40,7 +39,7 @@ class IndexController extends AbstractController
 
     public function goInsert(GoTask $task)
     {
-        return $task->call('App.Insert', json_encode(['random' => rand(1, 10000)]), RELAY::PAYLOAD_RAW);
+        return $task->call('App.Insert', json_encode(['random' => rand(1, 10000)]), GoTask::PAYLOAD_RAW);
     }
 
     public function goFib(GoTask $task)
