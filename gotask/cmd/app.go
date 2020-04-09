@@ -7,17 +7,22 @@ import (
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
+	"log"
 	"time"
 )
 
 // App sample
 type App struct {
-	client *mongo.Client
+	client       *mongo.Client
+	PHPNamespace string
+	PHPPath      string
 }
 
 func NewApp(client *mongo.Client) *App {
 	return &App{
 		client,
+		"App",
+		"../app",
 	}
 }
 
@@ -75,6 +80,10 @@ func main() {
 	}
 	collection := client.Database("testing").Collection("numbers")
 	_ = collection.Drop(ctx)
-	gotask.Register(NewApp(client))
-	gotask.Run()
+	if err := gotask.Register(NewApp(client)); err != nil {
+		log.Fatalln(err)
+	}
+	if err := gotask.Run(); err != nil {
+		log.Fatalln(err)
+	}
 }

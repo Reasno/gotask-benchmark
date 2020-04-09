@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\App as GoTask;
 use App\PHPTask;
 use Hyperf\HttpServer\Annotation\AutoController;
-use Reasno\GoTask\GoTask;
 
 /**
  * Class IndexController.
@@ -29,7 +29,7 @@ class IndexController extends AbstractController
 
     public function goHi(GoTask $task)
     {
-        return $task->call('App.Hi', 'Reasno');
+        return $task->hi('Reasno');
     }
 
     public function phpInsert(PHPTask $task)
@@ -37,14 +37,9 @@ class IndexController extends AbstractController
         return $task->insert(['random' => rand(1, 10000)]);
     }
 
-    public function goInsert(GoTask $task)
+    public function goInsert(GoTask $app)
     {
-        return $task->call('App.Insert', json_encode(['random' => rand(1, 10000)]), GoTask::PAYLOAD_RAW);
-    }
-
-    public function goFib(GoTask $task)
-    {
-        return $task->call('App.Fib', 20);
+        return $app->insert(json_encode(['random' => rand(1, 10000)]));
     }
 
     public function phpFib(PHPTask $task)
@@ -52,11 +47,16 @@ class IndexController extends AbstractController
         return $task->fib(20);
     }
 
-    public function goBlocking(GoTask $task){
-        return $task->call('App.Blocking', null);
+    public function goFib(GoTask $task)
+    {
+        return $task->fib(20);
     }
 
     public function phpBlocking(PHPTask $task){
         return $task->blocking();
+    }
+
+    public function goBlocking(GoTask $task){
+        return $task->blocking( null);
     }
 }
