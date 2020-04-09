@@ -6,6 +6,7 @@
 cd gotask
 go build -o ../bin/app cmd/app.go
 cd ..
+composer install
 ./vendor/bin/init-proxy.sh && php bin/hyperf.php start
 ```
 
