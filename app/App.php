@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App;
 
-use Reasno\GoTask\GoTask;
-use Reasno\GoTask\GoTaskProxy;
+use Hyperf\GoTask\GoTask;
+use Hyperf\GoTask\GoTaskProxy;
 
 class App extends GoTaskProxy
 {

@@ -13,10 +13,10 @@ declare(strict_types=1);
 return [
     'enable' => true,
     'executable' => BASE_PATH . '/bin/app',
-    'socket_address' => \Reasno\GoTask\ConfigProvider::address(),
+    'socket_address' => \Hyperf\GoTask\ConfigProvider::address(),
     'go2php' => [
         'enable' => true,
-        'address' => \Reasno\GoTask\ConfigProvider::address(),
+        'address' => \Hyperf\GoTask\ConfigProvider::address(),
     ],
     'go_build' => [
         'enable' => true,
