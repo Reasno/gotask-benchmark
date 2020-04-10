@@ -70,6 +70,7 @@ github.com/reasno/gotask v0.2.0 h1:OiWBG2icrup35UaRZNp9Lp63J8z3TbNoyycPFUwUPko=
 github.com/reasno/gotask v0.2.0/go.mod h1:F5YYG2lGCrqrufnK0yby4a04Rj72gwe8T8aMHvn8z4g=
 github.com/reasno/gotask v1.0.1 h1:4oQHbLWzUn+mVsv5JKqyWIHiB/7Xi74MdBx6B2fROGM=
 github.com/reasno/gotask v1.0.1/go.mod h1:sQT32D71HEUSeccZDNKyEqP3BuIjD31sSvwm3cRntno=
+github.com/reasno/gotask v1.0.2/go.mod h1:sQT32D71HEUSeccZDNKyEqP3BuIjD31sSvwm3cRntno=
 github.com/rogpeppe/go-internal v1.1.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
 github.com/rogpeppe/go-internal v1.2.2/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
 github.com/rogpeppe/go-internal v1.3.0/go.mod h1:M8bDsm7K2OlrFYOpmOWEs/qY81heoFRclV5y23lUDJ4=
