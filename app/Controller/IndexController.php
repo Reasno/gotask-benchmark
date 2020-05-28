@@ -37,9 +37,9 @@ class IndexController extends AbstractController
         return $task->insert(['random' => rand(1, 10000)]);
     }
 
-    public function goInsert(GoTask $app)
+    public function goInsert(GoTask $task)
     {
-        return $app->insert(json_encode(['random' => rand(1, 10000)]));
+        return $task->insert(json_encode(['random' => rand(1, 10000)]));
     }
 
     public function phpFib(PHPTask $task)
